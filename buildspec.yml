@@ -4,5 +4,8 @@ phases:
   build:
     commands:      
       - echo Deploying Static Website to S3
+
       - aws s3 cp index.html s3://luit-black-dec-2023-beta/index.html --acl public-read
+      - if [ "$CODEBUILD_WEBHOOK_EVENT" == "PULL_REQUEST_MERGED" ]  ; 
+        then aws s3 cp index.html s3://luit-black-dec-2023-prod/index.html --acl public-read; fi
       
