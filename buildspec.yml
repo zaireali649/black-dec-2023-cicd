@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+  build:
+    commands:      
+      - echo Deploying Static Website to S3
+      - aws s3 cp index.html s3://luit-black-dec-2023-beta/index.html --acl public-read
+      
